@@ -98,7 +98,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (lat && lon && localStorage.getItem("cityIds") === "") {
+    if (lat && lon) {
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`

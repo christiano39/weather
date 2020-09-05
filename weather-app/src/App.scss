@@ -33,11 +33,20 @@ body {
   flex-direction: column;
   align-items: center;
 
+  .top {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    i {
+      margin: 13px;
+      margin-bottom: 0;
+    }
+  }
+
   .fa-times {
     cursor: pointer;
-    align-self: flex-end;
-    margin: 13px;
-    margin-bottom: 0;
   }
 
   h2 {

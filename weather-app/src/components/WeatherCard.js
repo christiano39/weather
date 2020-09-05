@@ -16,7 +16,15 @@ const WeatherCard = (props) => {
 
   return (
     <Card className="weather-card">
-      <i className="fas fa-times" onClick={() => removeCity(weather.name)}></i>
+      <div className="top">
+        <i
+          className="fas fa-times"
+          onClick={() => removeCity(weather.name)}
+        ></i>
+        {weather.isCurrentLocation && (
+          <i className="fas fa-map-marker-alt" title="Current Location"></i>
+        )}
+      </div>
       <CardContent>
         <h2>
           {weather.name}, {weather.sys.country}

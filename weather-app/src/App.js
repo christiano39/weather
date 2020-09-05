@@ -75,7 +75,10 @@ function App() {
       });
     }
 
-    if (localStorage.getItem("cityIds") !== "") {
+    if (
+      localStorage.getItem("cityIds") &&
+      localStorage.getItem("cityIds") !== ""
+    ) {
       const cityIds = localStorage.getItem("cityIds").split(",");
 
       cityIds.forEach((id) => {

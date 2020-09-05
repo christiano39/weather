@@ -42,9 +42,16 @@ function App() {
         `https://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${process.env.REACT_APP_API_KEY}`
       )
       .then((res) => {
-        setWeathers([...weathers, res.data]);
+        const newWeathers = weathers.filter((weather) => {
+          return weather.id !== res.data.id;
+        });
+
+        if (newWeathers.length !== weathers.length) {
+          setSearchError(`${res.data.name} is already added`);
+        }
+
+        setWeathers([...newWeathers, res.data]);
         setSearchText("");
-        setSearchError("");
       })
       .catch((err) => {
         console.log(err);
@@ -76,8 +83,7 @@ function App() {
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
         )
         .then((res) => {
-          console.log(res);
-          setWeathers([...weathers, res.data]);
+          setWeathers((weathers) => [...weathers, res.data]);
         })
         .catch((err) => {
           console.log(err);

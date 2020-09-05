@@ -10,7 +10,7 @@ const CardContainer = (props) => {
       {weathers.map((weather) => {
         return (
           <WeatherCard
-            key={weather.name}
+            key={weather.id}
             weather={weather}
             tempUnit={tempUnit}
             swapTemp={swapTemp}

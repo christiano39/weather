@@ -13,9 +13,11 @@ const SearchBar = (props) => {
           onChange={onSearchChange}
           placeholder="Search by city..."
         />
-        <Button id="search-btn">Search</Button>
-        {searchError && <p className="error">{searchError}</p>}
+        <Button id="search-btn" variant="contained" color="primary">
+          Add City
+        </Button>
       </form>
+      {searchError && <p className="error">{searchError}</p>}
     </div>
   );
 };

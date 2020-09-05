@@ -74,10 +74,28 @@ function App() {
         setLon(position.coords.longitude);
       });
     }
+
+    if (localStorage.getItem("cityIds") !== "") {
+      const cityIds = localStorage.getItem("cityIds").split(",");
+
+      cityIds.forEach((id) => {
+        axios
+          .get(
+            `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.REACT_APP_API_KEY}`
+          )
+          .then((res) => {
+            console.log(res);
+            setWeathers((weathers) => [...weathers, res.data]);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      });
+    }
   }, []);
 
   useEffect(() => {
-    if (lat && lon) {
+    if (lat && lon && localStorage.getItem("cityIds") === "") {
       axios
         .get(
           `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`
@@ -90,6 +108,13 @@ function App() {
         });
     }
   }, [lat, lon]);
+
+  useEffect(() => {
+    // const cityIds = weathers.map((weather) => {
+    //   return weather.id;
+    // });
+    //localStorage.setItem("cityIds", `${cityIds.join(",")}`);
+  }, [weathers]);
 
   return (
     <div className="App">

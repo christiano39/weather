@@ -8,11 +8,12 @@ const SearchBar = (props) => {
     <div className="search-container">
       <form onSubmit={onSubmit}>
         <TextField
+          id="search-field"
           value={searchText}
           onChange={onSearchChange}
           placeholder="Search by city..."
         />
-        <Button>Search</Button>
+        <Button id="search-btn">Search</Button>
         {searchError && <p className="error">{searchError}</p>}
       </form>
     </div>

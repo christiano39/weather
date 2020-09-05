@@ -92,5 +92,17 @@ body {
   form {
     display: flex;
     align-items: center;
+
+    #search-field {
+      font-size: 1.8rem;
+    }
+
+    #search-btn {
+      font-size: 1.8rem;
+    }
   }
+}
+
+.error {
+  color: red;
 }

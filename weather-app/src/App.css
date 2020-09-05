@@ -11,3 +11,8 @@
   color: #7dabf5;
   cursor: pointer;
 }
+
+.weather-card {
+  width: 370px;
+  margin: 25px;
+}

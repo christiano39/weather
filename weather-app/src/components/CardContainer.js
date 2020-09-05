@@ -3,11 +3,20 @@ import React from "react";
 import WeatherCard from "./WeatherCard";
 
 const CardContainer = (props) => {
-  const { currentLocation } = props;
+  const { weathers, tempUnit, swapTemp } = props;
 
   return (
     <div className="card-container">
-      <WeatherCard weather={currentLocation} />
+      {weathers.map((weather) => {
+        return (
+          <WeatherCard
+            key={weather.name}
+            weather={weather}
+            tempUnit={tempUnit}
+            swapTemp={swapTemp}
+          />
+        );
+      })}
     </div>
   );
 };

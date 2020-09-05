@@ -4,12 +4,7 @@ import { k_to_c, k_to_f, mpsToMph } from "../helpers/conversions";
 import { Card, CardContent } from "@material-ui/core";
 
 const WeatherCard = (props) => {
-  const { weather } = props;
-  const [tempUnit, setTempUnit] = useState("f");
-
-  const swapTemp = () => {
-    tempUnit === "c" ? setTempUnit("f") : setTempUnit("c");
-  };
+  const { weather, tempUnit, swapTemp } = props;
 
   if (!weather) {
     return (
@@ -21,8 +16,14 @@ const WeatherCard = (props) => {
 
   return (
     <Card className="weather-card">
-      <CardContent>{weather.name}</CardContent>
-      <CardContent>{weather.weather.main}</CardContent>
+      <CardContent>
+        {weather.name}, {weather.sys.country}
+      </CardContent>
+      <CardContent>{weather.weather[0].main}</CardContent>
+      <img
+        src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+        alt={weather.weather[0].main}
+      />
       {tempUnit === "f" ? (
         <CardContent>
           {k_to_f(weather.main.temp)} <span className="f temp-unit">°F</span> |{" "}
@@ -52,7 +53,7 @@ const WeatherCard = (props) => {
         </CardContent>
       ) : (
         <CardContent>
-          Wind: {weather.wind.speed} m/s{" "}
+          Wind: {Math.round(weather.wind.speed)} m/s{" "}
           <i
             className="fas fa-arrow-up"
             style={{ transform: `rotate(${weather.wind.deg}deg)` }}

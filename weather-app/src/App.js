@@ -3,7 +3,7 @@ import axios from "axios";
 
 import CardContainer from "./components/CardContainer";
 import SearchBar from "./components/SearchBar";
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [lat, setLat] = useState(null);
@@ -52,6 +52,14 @@ function App() {
       });
   };
 
+  const removeCity = (name) => {
+    setWeathers(
+      weathers.filter((weather) => {
+        return weather.name !== name;
+      })
+    );
+  };
+
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -89,6 +97,7 @@ function App() {
         weathers={weathers}
         tempUnit={tempUnit}
         swapTemp={swapTemp}
+        removeCity={removeCity}
       />
     </div>
   );

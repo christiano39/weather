@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { TextField, Button } from "@material-ui/core";
 
 const SearchBar = (props) => {
@@ -6,13 +6,15 @@ const SearchBar = (props) => {
 
   return (
     <div className="search-container">
-      <TextField
-        value={searchText}
-        onChange={onSearchChange}
-        placeholder="Search by city..."
-      />
-      <Button onClick={onSubmit}>Search</Button>
-      {searchError && <p className="error">{searchError}</p>}
+      <form onSubmit={onSubmit}>
+        <TextField
+          value={searchText}
+          onChange={onSearchChange}
+          placeholder="Search by city..."
+        />
+        <Button>Search</Button>
+        {searchError && <p className="error">{searchError}</p>}
+      </form>
     </div>
   );
 };

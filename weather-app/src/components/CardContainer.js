@@ -3,7 +3,7 @@ import React from "react";
 import WeatherCard from "./WeatherCard";
 
 const CardContainer = (props) => {
-  const { weathers, tempUnit, swapTemp } = props;
+  const { weathers, tempUnit, swapTemp, removeCity } = props;
 
   return (
     <div className="card-container">
@@ -14,6 +14,7 @@ const CardContainer = (props) => {
             weather={weather}
             tempUnit={tempUnit}
             swapTemp={swapTemp}
+            removeCity={removeCity}
           />
         );
       })}

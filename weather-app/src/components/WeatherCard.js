@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { k_to_c, k_to_f, mpsToMph } from "../helpers/conversions";
 
 import { Card, CardContent } from "@material-ui/core";
 
 const WeatherCard = (props) => {
-  const { weather, tempUnit, swapTemp } = props;
+  const { weather, tempUnit, swapTemp, removeCity } = props;
 
   if (!weather) {
     return (
@@ -16,8 +16,11 @@ const WeatherCard = (props) => {
 
   return (
     <Card className="weather-card">
+      <i className="fas fa-times" onClick={() => removeCity(weather.name)}></i>
       <CardContent>
-        {weather.name}, {weather.sys.country}
+        <h2>
+          {weather.name}, {weather.sys.country}
+        </h2>
       </CardContent>
       <CardContent>{weather.weather[0].main}</CardContent>
       <img

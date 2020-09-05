@@ -109,12 +109,12 @@ function App() {
     }
   }, [lat, lon]);
 
-  useEffect(() => {
-    // const cityIds = weathers.map((weather) => {
-    //   return weather.id;
-    // });
-    //localStorage.setItem("cityIds", `${cityIds.join(",")}`);
-  }, [weathers]);
+  // useEffect(() => {
+  //   // const cityIds = weathers.map((weather) => {
+  //   //   return weather.id;
+  //   // });
+  //   //localStorage.setItem("cityIds", `${cityIds.join(",")}`);
+  // }, [weathers]);
 
   return (
     <div className="App">

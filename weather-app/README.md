@@ -1,3 +1,5 @@
+Deployed App: https://my-weather-39.vercel.app/
+
 # Weather App
 
 This app is a small side project created by Christian Arneson.
